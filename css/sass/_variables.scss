@@ -1,0 +1,25 @@
+/*Fonts*/
+
+$basefont: 16px 'Arial' 'Helvetica' sans-serif;
+$lightfont: 300 0.75em 'Open Sans' sans-serif;
+$boldfont: 700 0.8125em 'Open Sans' sans-serif;
+$extraboldfont: 800 1.4375em 'Open Sans' sans-serif;
+$cursivefont: italic 400 0.875em 'Open Sans' sans-serif;
+
+/*Colors*/
+
+$white: #f9f8f7;
+
+/*Mixins*/
+
+@mixin box-sizing($type){
+	-webkit-box-sizing: $type;
+	-moz-box-sizing: $type;
+	box-sizing: $type;
+}
+
+@mixin box-shadow($x, $y, $blur, $size, $color){
+	-webkit-box-shadow: $x $y $blur $size $color;
+	-moz-box-shadow: $x $y $blur $size $color;
+	box-shadow: $x $y $blur $size $color;
+}
