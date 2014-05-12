@@ -1,17 +1,17 @@
 /*Fonts*/
-
 $basefont: 16px 'Arial' 'Helvetica' sans-serif;
+$narrowfont: 16px 'Arial Narrow' 'Helvetica' sans-serif;
 $lightfont: 300 0.75em 'Open Sans' sans-serif;
 $boldfont: 700 0.8125em 'Open Sans' sans-serif;
 $extraboldfont: 800 1.4375em 'Open Sans' sans-serif;
 $cursivefont: italic 400 0.875em 'Open Sans' sans-serif;
 
 /*Colors*/
-
 $white: #f9f8f7;
+$black: #272626;
+$grey: #7e8081;
 
 /*Mixins*/
-
 @mixin box-sizing($type){
 	-webkit-box-sizing: $type;
 	-moz-box-sizing: $type;
@@ -22,4 +22,40 @@ $white: #f9f8f7;
 	-webkit-box-shadow: $x $y $blur $size $color;
 	-moz-box-shadow: $x $y $blur $size $color;
 	box-shadow: $x $y $blur $size $color;
+}
+
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin border-top-left-radius($radius){
+	-webkit-border-top-left-radius: $radius;
+	-moz-border-top-left-radius: $radius;
+	border-top-left-radius: $radius;
+}
+
+@mixin border-top-right-radius($radius){
+	-webkit-border-top-right-radius: $radius;
+	-moz-border-top-right-radius: $radius;
+	border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-left-radius($radius){
+	-webkit-border-bottom-left-radius: $radius;
+	-moz-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+}
+
+@mixin border-bottom-right-radius($radius){
+	-webkit-border-bottom-right-radius: $radius;
+	-moz-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+}
+
+@mixin text-shadow($x, $y, $blur, $color){
+	-webkit-text-shadow: $x $y $blur  $color;
+	-moz-text-shadow: $x $y $blur $color;
+	text-shadow: $x $y $blur $color;
 }

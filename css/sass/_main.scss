@@ -27,6 +27,7 @@ html {
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
  * Customize the background color to match your design.
+ 
  */
 
 ::-moz-selection {
@@ -110,6 +111,20 @@ body {
 	background: url(../img/bg.jpg);
 }
 
+a,
+a:visited {
+	color: $black;
+	text-decoration: none;
+}
+
+h2 {
+	font: $narrowfont;
+	font-size: 2.625em;
+	color: $grey;
+	padding: 0 0 6px 20px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
 .body-gradient {
 	background: -moz-linear-gradient(left,  rgba(172,172,171,0.53) 0%, rgba(172,172,171,0.53) 6%, rgba(179,179,178,0.53) 12%, rgba(197,197,196,0.53) 22%, rgba(233,232,231,0.53) 37%, rgba(243,242,241,0.53) 44%, rgba(249,248,247,0.53) 51%, rgba(248,246,246,0.53) 58%, rgba(240,239,238,0.53) 64%, rgba(222,222,221,0.53) 74%, rgba(187,187,186,0.53) 89%, rgba(177,178,176,0.53) 95%, rgba(172,172,171,0.53) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(172,172,171,0.53)), color-stop(6%,rgba(172,172,171,0.53)), color-stop(12%,rgba(179,179,178,0.53)), color-stop(22%,rgba(197,197,196,0.53)), color-stop(37%,rgba(233,232,231,0.53)), color-stop(44%,rgba(243,242,241,0.53)), color-stop(51%,rgba(249,248,247,0.53)), color-stop(58%,rgba(248,246,246,0.53)), color-stop(64%,rgba(240,239,238,0.53)), color-stop(74%,rgba(222,222,221,0.53)), color-stop(89%,rgba(187,187,186,0.53)), color-stop(95%,rgba(177,178,176,0.53)), color-stop(100%,rgba(172,172,171,0.53))); /* Chrome,Safari4+ */
@@ -126,6 +141,7 @@ body {
 	background: $white;
 	width: 998px;
 	margin: 24px auto;
+	@include box-shadow(0,0,23px,7px, rgba(5,6,6,0.40));
 }
 
 header {
@@ -169,36 +185,223 @@ header {
 	line-height: 1.8em;
 }
 
+.header-toolbar {
+	background: url(../img/nav-bg.jpg) repeat-x;
+	width: 940px;
+	height: 52px;
+	margin: 16px auto 0;
+	@include border-radius(3px);
+	@include box-shadow(0, 0, 6px, 4px, rgba(0,0,0,0.33));
+}
+
 nav.primary {
+	height: 100%;
+	line-height: 52px;
+	
 	ul, li {
 		list-style-type: none;
 	}
 	
-	>ul{
-		>li {
-			float: left;
+	li {
+		
+		a {
+			font: $lightfont;
+			font-size: 1.125em;
 		}
 	}
 	
+	>ul{
+		>li {
+			position: relative;
+			height: 51px;
+			padding: 0 10px;
+			float: left;
+			border-right: 1px solid #e5e7e9;
+			@include box-shadow(1px, 0, 1px, 0, rgba(255,255,255,0.75));
+			
+			&:first-child {
+				@include border-top-left-radius(3px);
+				@include border-bottom-left-radius(3px);
+			}
+			
+			&:hover {
+				background: url(../img/nav-hover-bg.jpg) repeat-x;
+				
+				>a{
+					color: $white;
+					@include text-shadow(0, 0, 1px, rgba(138, 27, 15, 0.41));
+				}
+				
+				ul {
+					display: block;
+				}
+			}
+			
+			&.current,
+			&:active {
+				background: url(../img/nav-focus-bg.jpg) repeat-x;
+				
+				>a {
+					color: $white;
+				}
+			}
+			
+			>ul {
+				background: #ededed;
+				position: absolute;
+				width: 120%;
+				top: 100%;
+				left: 0;
+				display: none;
+				-webkit-box-shadow: inset 0 10px 6px -5px rgba(0, 0, 0, 0.33),
+											0 2px 4px 2px rgba(155,155,155, 0.46);
+				-moz-box-shadow: inset 0 10px 6px -5px rgba(0, 0, 0, 0.33),
+										0 2px 4px 2px rgba(155,155,155, 0.46);
+				box-shadow: inset 0 10px 6px -5px rgba(0, 0, 0, 0.33),
+									0 2px 4px 2px rgba(155,155,155, 0.46);
+
+				li {
+					height: 33px;
+					padding-left: 20px;
+					line-height: 33px;
+					border-bottom: 1px solid rgba(0,0,0,0.16);
+					@include box-shadow(0, 1px, 1px, 0, rgba(255, 255, 255, 0.75));
+					
+					a {
+						font-size: 0.75em;
+					}
+					
+					&:last-child{
+						@include border-bottom-left-radius(3px);
+						@include border-bottom-right-radius(3px);
+						border-bottom: 0;
+					}
+					
+					&:hover{
+						background: url(../img/subnav-hover-bg.jpg) repeat-x;
+						
+						a {
+							font-weight: bold;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.content-wrapper {
+	padding: 10px 24px;
+}
+
+.sidebar {
+	width: 225px;
+	float: left;
+}
+
+.content {
+	width: 941px - 225px;
+	float: right;
+}
+
+.catalog-items {
+	margin: 15px 0 60px 0;
+}
+
+.item {
+	width:220px;
+	margin-right: 28px;
+	padding: 10px;
+	float: left;
+	@include border-radius(3px);
+	@include box-shadow(0,2px,5px,1px, rgba(0,0,0,0.2));
+	
+	&:last-child {
+		margin-right: 0;
+	}
+	
+	figure {
+		position: relative;
+		width: 200px;
+		height: 160px;
+		overflow: hidden;
+		border: 1px solid #cccccc;
+		@include border-radius(3px);
+		
+		figcaption{
+			background: rgba(0,0,0,0.6);
+			font: $narrowfont;
+			font-size: 1.125em;
+			line-height: 45px;
+			color: $white;
+			text-decoration: underline;
+			position: absolute;
+			bottom: 0;
+			height: 45px;
+			width: 100%;
+			padding-left: 10px;
+		}
+	}
+}
+
+.item-info {
+	position: relative;
+	height: 52px;
+	margin-top: 10px;
+	button {
+		position: absolute;
+		right: 0;
+	}
+}
+
+.item-price {
+	font: $narrowfont;
+	font-size: 1.75em;
+	line-height: (52/(16*1.75))+em;
+	color: #595959;
+	height: 100%;
+	float: left;
+}
+
+button {
+	background: #e6e6e6;
+	font: $narrowfont;
+	color: #595959;
+	text-transform: uppercase;
+	padding: 14px 18px;
+	border: none;
+	@include border-radius (3px);
+	@include box-shadow(0, 3px, 0,0, #a6a6a6);
+	transition: background 0.5s ease;
+	
+	&:hover {
+		background: #517e99;
+		color: $white;
+	}
+	
+	&:active{
+		border: none;
+		outline: 0;
+		top: 3px;
+		box-shadow: 0 0 transparent;
+	}
+	
+	&:focus {
+		color: $white;
+		outline: 0;
+		border: none;
+		background: #517e99;
+	}
+	
+	&:visited {
+		background: #e6e6e6;
+	}
 }
 
 footer {
 	width: 998px;
 	margin: 0 auto;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* ==========================================================================
